@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="/public/index.css">
+  </head>
+  <body>
+    <h1>Habit Tracker</h1>
+
+    <h2>All Habits</h2>
+    <ul>
+      <% habits.forEach((habit) => { %>
+        <li>
+          <a href="/habits/<%= habit.id %>">
+            <%= habit.name %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+
+    <h2>Add New Habit</h2>
+    <form action="/" method="POST">
+      <input type="text" name="name" placeholder="Habit name" required>
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>

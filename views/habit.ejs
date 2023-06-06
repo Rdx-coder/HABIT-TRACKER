@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="/public/index.css">
+  </head>
+  <body>
+    <h1>Habit Tracker</h1>
+
+    <h2>Habit: <%= rows[0].name %></h2>
+
+    <h3>Latest 7 Days</h3>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+      <% rows.forEach((row) => { %>
+        <tr>
+          <td><%= row.date %></td>
+          <td><%= row.status === 1 ? 'Done' : row.status === 2 ? 'Not Done' : 'None' %></td>
+        </tr>
+      <% }) %>
+    </table>
+
+    <h3>Update Today's Status</h3>
+    <form action="/habits/<%= rows[0].id %>/update" method="POST">
+      <select name="status">
+        <option value="0">None</option>
+        <option value="1">Done</option>
+        <option value="2">Not Done</option>
+      </select>
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>
